@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 import java.sql.*;
 import java.util.List;
 
-@WebServlet(name = "CardsServlet", value = "/Cards")
+@WebServlet(name = "CardsServlet", value = "/cards")
 public class CardsServlet extends HttpServlet {
 
 
@@ -23,9 +23,7 @@ public class CardsServlet extends HttpServlet {
         List<Cards> cards = cardsDao.getAll();
 
         ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(cards);
-
-        objectMapper.writeValue(response.getWriter(), json);
+        objectMapper.writeValue(response.getWriter(), cards);
     }
 
     @Override

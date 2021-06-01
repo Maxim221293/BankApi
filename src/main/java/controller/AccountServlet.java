@@ -13,17 +13,16 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AccountServlet", value = "/Account")
+@WebServlet(name = "AccountServlet", value = "/account")
 public class AccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String accountNumber = request.getParameter("accountNumber");
         AccountDao accountDao = DaoFactory.getAccountDao();
-        Account account = AccountDao.get();
+        Account account = accountDao.get(accountNumber);
 
         ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(account);
-
-        objectMapper.writeValue(response.getWriter(), json);
+        objectMapper.writeValue(response.getWriter(), account);
     }
 
     @Override

@@ -11,7 +11,7 @@
 
     <servlet-mapping>
         <servlet-name>CardsServlet</servlet-name>
-        <url-pattern>/Cards</url-pattern>
+        <url-pattern>/cards</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -21,6 +21,6 @@
 
     <servlet-mapping>
         <servlet-name>AccountServlet</servlet-name>
-        <url-pattern>/Account</url-pattern>
+        <url-pattern>/account</url-pattern>
     </servlet-mapping>
 </web-app>
