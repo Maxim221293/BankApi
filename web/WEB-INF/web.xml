@@ -6,10 +6,21 @@
 
     <servlet>
         <servlet-name>CardsServlet</servlet-name>
-        <servlet-class>CardsServlet</servlet-class>
+        <servlet-class>controller.CardsServlet</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>CardsServlet</servlet-name>
-        <url-pattern>/cards</url-pattern>
+        <url-pattern>/Cards</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AccountServlet</servlet-name>
+        <servlet-class>controller.AccountServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AccountServlet</servlet-name>
+        <url-pattern>/Account</url-pattern>
     </servlet-mapping>
 </web-app>

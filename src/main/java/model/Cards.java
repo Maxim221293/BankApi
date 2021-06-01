@@ -2,42 +2,42 @@ package model;
 
 public class Cards {
 
-    private int cards_id;
-    private String account_number;
-    private int account_id;
+    private int cardsId;
+    private String accountNumber;
+    private int accountId;
 
     public Cards() {
     }
 
-    public Cards(int cards_id, String account_number, int account_id) {
-        this.cards_id = cards_id;
-        this.account_number = account_number;
-        this.account_id = account_id;
+    public Cards(int cardsId, String accountNumber, int accountId) {
+        this.cardsId = cardsId;
+        this.accountNumber = this.getAccountNumber();
+        this.accountId = accountId;
     }
 
 
-    public int getCards_id() {
-        return cards_id;
+    public int getCardsId() {
+        return cardsId;
     }
 
-    public void setCards_id(int cards_id) {
-        this.cards_id = cards_id;
+    public void setCardsId(int cardsId) {
+        this.cardsId = cardsId;
     }
 
-    public String getAccount_number() {
-        return account_number;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAccount_number(String account_number) {
-        this.account_number = account_number;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
-    public int getAccount_id() {
-        return account_id;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setAccount_id(int account_id) {
-        this.account_id = account_id;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     @Override
@@ -47,17 +47,25 @@ public class Cards {
 
         Cards cards = (Cards) o;
 
-        if (cards_id != cards.cards_id) return false;
-        if (account_id != cards.account_id) return false;
-        return account_number != null ? account_number.equals(cards.account_number) : cards.account_number == null;
+        if (cardsId != cards.cardsId) return false;
+        if (accountId != cards.accountId) return false;
+        return accountNumber != null ? accountNumber.equals(cards.accountNumber) : cards.accountNumber == null;
     }
 
     @Override
     public int hashCode() {
-        int result = cards_id;
-        result = 31 * result + (account_number != null ? account_number.hashCode() : 0);
-        result = 31 * result + account_id;
+        int result = cardsId;
+        result = 31 * result + (accountNumber != null ? accountNumber.hashCode() : 0);
+        result = 31 * result + accountId;
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Cards{" +
+                "cardsId=" + cardsId +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", accountId=" + accountId +
+                '}';
+    }
 }

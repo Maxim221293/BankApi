@@ -5,16 +5,15 @@ CREATE TABLE IF NOT EXISTS CLIENT
     FIRST_NAME       VARCHAR(30) NOT NULL,
     SECOND_NAME      VARCHAR(30) NOT NULL,
     PASSPORT_DATA     VARCHAR(50) NOT NULL,
-    TELEPHONE_NUMBER VARCHAR(30) NOT NULL,
     PRIMARY KEY (CLIENT_ID)
     );
 
 INSERT INTO CLIENT
-VALUES (1, 'Станислав', 'Николаев', 'некие данные', '89124567385');
+VALUES (1, 'Станислав', 'Николаев', 'некие данные');
 INSERT INTO CLIENT
-VALUES (2, 'Антонио', 'Бажин', 'некие данные', '89025783652');
+VALUES (2, 'Антонио', 'Бажин', 'некие данные');
 INSERT INTO CLIENT
-VALUES (3, 'Иван', 'Иванов', 'некие днные', '89125733496');
+VALUES (3, 'Иван', 'Иванов', 'некие днные');
 
 
 CREATE TABLE IF NOT EXISTS ACCOUNT

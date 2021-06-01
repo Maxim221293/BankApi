@@ -1,50 +1,50 @@
 package model;
 
 public class Client {
-    private int client_id;
-    private String first_name;
-    private String second_name;
-    private String passport_data;
-    private String telephone_number;
+    private int clientId;
+    private String firstName;
+    private String secondName;
+    private String passportData;
+    private String telephoneNumber;
 
-    public int getClient_id() {
-        return client_id;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSecond_name() {
-        return second_name;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setSecond_name(String second_name) {
-        this.second_name = second_name;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
-    public String getPassport_data() {
-        return passport_data;
+    public String getPassportData() {
+        return passportData;
     }
 
-    public void setPassport_data(String passport_data) {
-        this.passport_data = passport_data;
+    public void setPassportData(String passportData) {
+        this.passportData = passportData;
     }
 
-    public String getTelephone_number() {
-        return telephone_number;
+    public String getTelephoneNumber() {
+        return telephoneNumber;
     }
 
-    public void setTelephone_number(String telephone_number) {
-        this.telephone_number = telephone_number;
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
     }
 
     @Override
@@ -54,32 +54,32 @@ public class Client {
 
         Client client = (Client) o;
 
-        if (client_id != client.client_id) return false;
-        if (first_name != null ? !first_name.equals(client.first_name) : client.first_name != null) return false;
-        if (second_name != null ? !second_name.equals(client.second_name) : client.second_name != null) return false;
-        if (passport_data != null ? !passport_data.equals(client.passport_data) : client.passport_data != null)
+        if (clientId != client.clientId) return false;
+        if (firstName != null ? !firstName.equals(client.firstName) : client.firstName != null) return false;
+        if (secondName != null ? !secondName.equals(client.secondName) : client.secondName != null) return false;
+        if (passportData != null ? !passportData.equals(client.passportData) : client.passportData != null)
             return false;
-        return telephone_number != null ? telephone_number.equals(client.telephone_number) : client.telephone_number == null;
+        return telephoneNumber != null ? telephoneNumber.equals(client.telephoneNumber) : client.telephoneNumber == null;
     }
 
     @Override
     public int hashCode() {
-        int result = client_id;
-        result = 31 * result + (first_name != null ? first_name.hashCode() : 0);
-        result = 31 * result + (second_name != null ? second_name.hashCode() : 0);
-        result = 31 * result + (passport_data != null ? passport_data.hashCode() : 0);
-        result = 31 * result + (telephone_number != null ? telephone_number.hashCode() : 0);
+        int result = clientId;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
+        result = 31 * result + (passportData != null ? passportData.hashCode() : 0);
+        result = 31 * result + (telephoneNumber != null ? telephoneNumber.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "Client{" +
-                "client_id=" + client_id +
-                ", first_name='" + first_name + '\'' +
-                ", second_name='" + second_name + '\'' +
-                ", passport_data='" + passport_data + '\'' +
-                ", telephone_number='" + telephone_number + '\'' +
+                "clientId=" + clientId +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", passportData='" + passportData + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
                 '}';
     }
 }
