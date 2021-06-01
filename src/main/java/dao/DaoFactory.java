@@ -22,8 +22,6 @@ public class DaoFactory {
         }
     }
 
-
-
     public static AccountDao getAccountDao(){
 
 }

@@ -18,7 +18,7 @@ public class AccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AccountDao accountDao = DaoFactory.getAccountDao();
-        Account account = AccountDao.get(a);
+        Account account = AccountDao.get();
 
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(account);

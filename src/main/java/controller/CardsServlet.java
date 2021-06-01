@@ -31,8 +31,8 @@ public class CardsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CardsDao cardsDao = DaoFactory.getCardsDao();
-        String accountNumber = request.getParameter("accountNumber");
-        Cards cards = cardsDao.create(accountNumber);
+        String cardsNumber = request.getParameter("cardsNumber");
+        Cards cards = cardsDao.create(cardsNumber);
 
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(cards);

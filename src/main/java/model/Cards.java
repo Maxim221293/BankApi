@@ -3,18 +3,17 @@ package model;
 public class Cards {
 
     private int cardsId;
-    private String accountNumber;
+    private String cardsNumber;
     private int accountId;
 
     public Cards() {
     }
 
-    public Cards(int cardsId, String accountNumber, int accountId) {
+    public Cards(int cardsId, String cardsNumber, int accountId) {
         this.cardsId = cardsId;
-        this.accountNumber = this.getAccountNumber();
+        this.cardsNumber = cardsNumber;
         this.accountId = accountId;
     }
-
 
     public int getCardsId() {
         return cardsId;
@@ -24,12 +23,12 @@ public class Cards {
         this.cardsId = cardsId;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
+    public String getCardsNumber() {
+        return cardsNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setCardsNumber(String cardsNumber) {
+        this.cardsNumber = cardsNumber;
     }
 
     public int getAccountId() {
@@ -49,13 +48,13 @@ public class Cards {
 
         if (cardsId != cards.cardsId) return false;
         if (accountId != cards.accountId) return false;
-        return accountNumber != null ? accountNumber.equals(cards.accountNumber) : cards.accountNumber == null;
+        return cardsNumber != null ? cardsNumber.equals(cards.cardsNumber) : cards.cardsNumber == null;
     }
 
     @Override
     public int hashCode() {
         int result = cardsId;
-        result = 31 * result + (accountNumber != null ? accountNumber.hashCode() : 0);
+        result = 31 * result + (cardsNumber != null ? cardsNumber.hashCode() : 0);
         result = 31 * result + accountId;
         return result;
     }
@@ -64,7 +63,7 @@ public class Cards {
     public String toString() {
         return "Cards{" +
                 "cardsId=" + cardsId +
-                ", accountNumber='" + accountNumber + '\'' +
+                ", cardsNumber='" + cardsNumber + '\'' +
                 ", accountId=" + accountId +
                 '}';
     }
