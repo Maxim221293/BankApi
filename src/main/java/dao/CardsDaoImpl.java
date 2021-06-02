@@ -5,6 +5,7 @@ import model.Cards;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CardsDaoImpl implements CardsDao {
 
@@ -16,6 +17,10 @@ public class CardsDaoImpl implements CardsDao {
 
     @Override
     public Cards create(String accountNumber) {
+        Cards cards = new Cards();
+        Random random = new Random();
+        Statement statement = connection.createStatement();
+
       return null;
     }
 

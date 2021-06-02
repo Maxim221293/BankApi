@@ -37,8 +37,6 @@ public class AccountDaoImpl implements AccountDao {
             String balance = result.getString("balance");
             Account account =new Account();
             account.setAccountId(result.getInt("account_id"));
-
-
 return account;
 
         } catch (SQLException throwables) {
