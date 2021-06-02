@@ -6,7 +6,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 public class CardsDaoImpl implements CardsDao {
 
     private final Connection connection;
@@ -21,7 +20,7 @@ public class CardsDaoImpl implements CardsDao {
         Random random = new Random();
         try {
             Statement statement = connection.createStatement();
-            
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

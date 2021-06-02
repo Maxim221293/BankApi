@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DaoFactory {
 
-    private static final String url = "jdbc:h2:/Users/u19215097/BankApi/dataBase/db;MV_STORE=false";
+    private static final String url = "jdbc:h2:/Users/u19215097/BankApi/dataBase/bd";
     private static final String user = "Maxim";
     private static final String password = "";
 
@@ -16,21 +16,32 @@ public class DaoFactory {
     public static CardsDao getCardsDao() {
         try {
             return new CardsDaoImpl(getConnection());
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
-return null;
+        return null;
     }
-        public static AccountDao getAccountDao() {
+    public static AccountDao getAccountDao() {
         try {
             return new AccountDaoImpl(getConnection());
-        } catch (SQLException throwables) {
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
-            return null;
-        }
+        return null;
     }
+}
+
+/*
+    public Connection getConnection(){
+        Connection connection = null;
+        try {
+            Class.forName("org.h2.Driver");
+            connection = DriverManager.getConnection(url, user, password);
+            System.out.println("Connection OK");
+        } catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+            System.out.println("Connection ERROR");
+        }
+        return connection;
+    }
+*/

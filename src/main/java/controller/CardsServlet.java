@@ -31,12 +31,10 @@ public class CardsServlet extends HttpServlet {
         CardsDao cardsDao = DaoFactory.getCardsDao();
         String cardsNumber = request.getParameter("cardsNumber");
         Cards cards = cardsDao.create(cardsNumber);
-
         ObjectMapper objectMapper = new ObjectMapper();
-
         objectMapper.writeValue(response.getWriter(), cards);
-        }
     }
+}
 
 
 

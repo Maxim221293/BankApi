@@ -1,9 +1,10 @@
 package model;
 
+
 public class Account {
     private int accountId;
     private String accountNumber;
-    private String balance;
+    private long balance;
     private int clientId;
 
     public int getAccountId() {
@@ -11,7 +12,7 @@ public class Account {
     }
 
     public void setAccountId(int accountId) {
-        this.accountId= accountId;
+        this.accountId = accountId;
     }
 
     public String getAccountNumber() {
@@ -22,11 +23,11 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public String getBalance() {
+    public long getBalance() {
         return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(long balance) {
         this.balance = balance;
     }
 
@@ -46,17 +47,16 @@ public class Account {
         Account account = (Account) o;
 
         if (accountId != account.accountId) return false;
+        if (balance != account.balance) return false;
         if (clientId != account.clientId) return false;
-        if (accountNumber != null ? !accountNumber.equals(account.accountNumber) : account.accountNumber != null)
-            return false;
-        return balance != null ? balance.equals(account.balance) : account.balance == null;
+        return accountNumber != null ? accountNumber.equals(account.accountNumber) : account.accountNumber == null;
     }
 
     @Override
     public int hashCode() {
         int result = accountId;
         result = 31 * result + (accountNumber != null ? accountNumber.hashCode() : 0);
-        result = 31 * result + (balance != null ? balance.hashCode() : 0);
+        result = 31 * result + (int) (balance ^ (balance >>> 32));
         result = 31 * result + clientId;
         return result;
     }
@@ -66,7 +66,7 @@ public class Account {
         return "Account{" +
                 "accountId=" + accountId +
                 ", accountNumber='" + accountNumber + '\'' +
-                ", balance='" + balance + '\'' +
+                ", balance=" + balance +
                 ", clientId=" + clientId +
                 '}';
     }
