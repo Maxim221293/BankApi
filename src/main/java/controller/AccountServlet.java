@@ -18,7 +18,7 @@ public class AccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String accountNumber = request.getParameter("accountNumber");
-        AccountDao accountDao = DaoFactory.getAccountDao();
+       AccountDao accountDao = DaoFactory.getAccountDao();
         Account account = accountDao.get(accountNumber);
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -27,6 +27,12 @@ public class AccountServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        AccountDao accountDao = DaoFactory.getAccountDao();
+        String accountNumber = request.getParameter("accountNumber");
+        accountDao.deposit(accountNumber, );
 
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        objectMapper.writeValue(response.getWriter(), cards);
     }
 }

@@ -33,9 +33,8 @@ public class CardsServlet extends HttpServlet {
         Cards cards = cardsDao.create(cardsNumber);
 
         ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(cards);
 
-        objectMapper.writeValue(response.getWriter(), json);
+        objectMapper.writeValue(response.getWriter(), cards);
         }
     }
 

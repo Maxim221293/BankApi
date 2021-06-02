@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class DaoFactory {
 
-    private static final String url = "jdbc:h2:~/bank";
-    private static final String user = "sa";
+    private static final String url = "jdbc:h2:/Users/u19215097/BankApi/dataBase/db;MV_STORE=false";
+    private static final String user = "Maxim";
     private static final String password = "";
 
     private static Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -16,13 +16,21 @@ public class DaoFactory {
     public static CardsDao getCardsDao() {
         try {
             return new CardsDaoImpl(getConnection());
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            throw new IllegalStateException();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+return null;
+    }
+        public static AccountDao getAccountDao() {
+        try {
+            return new AccountDaoImpl(getConnection());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+            return null;
         }
     }
-
-    public static AccountDao getAccountDao(){
-        return null;
-    }
-}
