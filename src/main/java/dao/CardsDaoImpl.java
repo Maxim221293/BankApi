@@ -19,9 +19,15 @@ public class CardsDaoImpl implements CardsDao {
     public Cards create(String accountNumber) {
         Cards cards = new Cards();
         Random random = new Random();
-        Statement statement = connection.createStatement();
+        try {
+            Statement statement = connection.createStatement();
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
-      return null;
+
+        return null;
     }
 
 
