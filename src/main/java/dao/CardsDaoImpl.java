@@ -39,7 +39,7 @@ public class CardsDaoImpl implements CardsDao {
 
             while (result.next()) {
                 int cardsId = result.getInt("cards_id");
-                String cardsNumber = result.getString("account_number");
+                String cardsNumber = result.getString("cards_number");
                 int accountId = result.getInt("account_id");
                 cards.add(new Cards(cardsId, cardsNumber, accountId));
             }

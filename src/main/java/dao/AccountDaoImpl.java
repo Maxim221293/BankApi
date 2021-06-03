@@ -54,10 +54,18 @@ public class AccountDaoImpl implements AccountDao {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM account WHERE account_number =" + accountNumber);
             result.next();
+            Account account = new Account();
+
             String accountId = result.getString("account_number");
             String balance = result.getString("balance");
-            Account account = new Account();
+            int clientId = result.getInt("client_id");
+
             account.setAccountId(result.getInt("account_id"));
+            account.setAccountNumber(result.getString("account_number"));
+            account.setBalance(result.getInt("balance"));
+            account.setClientId(result.getInt("client_id"));
+
+
             return account;
 
         } catch (SQLException throwables) {
