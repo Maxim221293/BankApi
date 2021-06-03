@@ -20,7 +20,6 @@ public class AccountDaoImpl implements AccountDao {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM account WHERE account_number =" + accountNumber);
             result.next();
-            System.out.println(result);
             long sumBalance = Long.parseLong(result.getString("balance")) + sum;
 
             PreparedStatement preparedStatement = connection.prepareStatement(
@@ -28,34 +27,24 @@ public class AccountDaoImpl implements AccountDao {
 
             preparedStatement.setLong(1, sumBalance);
             preparedStatement.setString(2, accountNumber);
-            try {
+            preparedStatement.executeUpdate();
 
-                ResultSet result1 = preparedStatement.executeQuery(
-                        "SELECT * FROM account WHERE account_number =" + accountNumber);
-                result1.next();
+            ResultSet result1 = statement.executeQuery("SELECT * FROM account WHERE account_number =" + accountNumber);
+            result1.next();
+            account.setAccountId(result1.getInt("account_id"));
+            account.setAccountNumber(result1.getString("account_number"));
+            account.setBalance(result1.getLong("balance"));
+            account.setClientId(result1.getInt("client_id"));
+            connection.close();
+            return account;
 
-                account.setAccountId(result1.getInt("account_id"));
-                account.setAccountNumber(result1.getString("account_number"));
-                account.setBalance(result1.getLong("balance"));
-                account.setClientId(result1.getInt("client_id"));
-                connection.close();
-                return account;
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            try {
-                connection.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            return null;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return null;
     }
-        @Override
+
+    @Override
     public Account get(String accountNumber) {
         try {
             Statement statement = connection.createStatement();
