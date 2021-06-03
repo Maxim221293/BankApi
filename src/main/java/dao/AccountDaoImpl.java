@@ -13,42 +13,49 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public String deposit(String accountNumber, long sum) {
+    public Account deposit(String accountNumber, long sum) {
+
+        Account account = new Account();
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM account WHERE account_number =" + accountNumber);
             result.next();
-            Account account = new Account();
-            account.setClientId(result.getInt("account_id"));
-            account.setAccountNumber(result.getString("account_number"));
-            account.setBalance(result.getLong("balance"));
+            System.out.println(result);
+            long sumBalance = Long.parseLong(result.getString("balance")) + sum;
 
-            long balance = account.getBalance();
-            long sumBalance = balance + sum;
-            account.setBalance(sumBalance);
-            String sqlQuery = "update account set balance = ? where account_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
-            preparedStatement.setLong(1, account.getBalance());
-            preparedStatement.setInt(2, account.getAccountId());
-            return (String.valueOf(1));
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "update account set balance = ? where account_number = ?");
 
-            /*result.next();
-            String accountId = result.getString("account_number");
-            String balance = result.getString("balance");
-            return (balance+sum);*/
+            preparedStatement.setLong(1, sumBalance);
+            preparedStatement.setString(2, accountNumber);
+            try {
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
-            connection.close();
+                ResultSet result1 = preparedStatement.executeQuery(
+                        "SELECT * FROM account WHERE account_number =" + accountNumber);
+                result1.next();
+
+                account.setAccountId(result1.getInt("account_id"));
+                account.setAccountNumber(result1.getString("account_number"));
+                account.setBalance(result1.getLong("balance"));
+                account.setClientId(result1.getInt("client_id"));
+                connection.close();
+                return account;
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            return null;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return null;
     }
-
-    @Override
+        @Override
     public Account get(String accountNumber) {
         try {
             Statement statement = connection.createStatement();

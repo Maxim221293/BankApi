@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface CardsDao {
 
-    Cards create(String accountNumber);
+
+    Cards create(String cardsNumber, int accountId);
 
     List <Cards> getAll();
 }

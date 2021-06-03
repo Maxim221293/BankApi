@@ -30,7 +30,8 @@ public class CardsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CardsDao cardsDao = DaoFactory.getCardsDao();
         String cardsNumber = request.getParameter("cardsNumber");
-        Cards cards = cardsDao.create(cardsNumber);
+        int accountId = Integer.parseInt(request.getParameter("accountId"));
+        Cards cards = cardsDao.create(cardsNumber, accountId);
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.writeValue(response.getWriter(), cards);
     }

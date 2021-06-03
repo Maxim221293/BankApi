@@ -30,17 +30,12 @@ public class AccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AccountDao accountDao = DaoFactory.getAccountDao();
         String accountNumber = request.getParameter("accountNumber");
-        String amount = request.getParameter("amount");
+        String sum = request.getParameter("sum");
 
-        String account = accountDao.deposit(accountNumber, Integer.parseInt(amount));
+        Account account = accountDao.deposit(accountNumber, Long.parseLong(sum));
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(response.getWriter(), 1);
+        objectMapper.writeValue(response.getWriter(), account);
 
 
-       /* accountDao.deposit(accountNumber, 1);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        objectMapper.writeValue(response.getWriter(), cards);*/
     }
 }
