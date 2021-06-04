@@ -47,14 +47,16 @@ public class AccountDaoImpl implements AccountDao {
     @Override
     public Account get(String accountNumber) {
         try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM account WHERE account_number =" + accountNumber);
+
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE account_number =?");
+            preparedStatement.setString(1, accountNumber);
+            ResultSet result = preparedStatement.executeQuery();
             result.next();
             Account account = new Account();
 
-            String accountId = result.getString("account_number");
+            /*String accountId = result.getString("account_number");
             String balance = result.getString("balance");
-            int clientId = result.getInt("client_id");
+            int clientId = result.getInt("client_id");*/
 
             account.setAccountId(result.getInt("account_id"));
             account.setAccountNumber(result.getString("account_number"));
@@ -67,12 +69,6 @@ public class AccountDaoImpl implements AccountDao {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        try {
-            connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
         return null;
-
     }
 }

@@ -26,8 +26,6 @@ public class CardsDaoImpl implements CardsDao {
             preparedStatement.setInt(2, accountId);
             preparedStatement.execute();
 
-            try {
-
                 PreparedStatement preparedStatement1 = connection.prepareStatement("SELECT * FROM cards WHERE cards_number = ?");
                 preparedStatement1.setString(1, cardsNumber);
                 ResultSet result = preparedStatement1.executeQuery();
@@ -43,11 +41,7 @@ public class CardsDaoImpl implements CardsDao {
                 throwables.printStackTrace();
             }
             return null;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
-        return null;
-    }
 
 
     @Override
